@@ -16,7 +16,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 # choose terms to watch
 terms = ['doge', 'dogecoin']
 
-# create twitter stream lister
+# create twitter stream listener
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         # check tweet for terms
@@ -24,14 +24,14 @@ class MyStreamListener(tweepy.StreamListener):
         # place a market order if term in tweet
         if term_used == True:
             order = client.create_market_order('DOGE-BTC', Client.SIDE_BUY, size=100)
-            print('Elon tweeted about Doge! Bought 5.')
-        print('Tweeted!')
+            print('Elon tweeted about Doge! Bought 100.')
+        # print('Tweeted, but not about terms')
 
 # define streaming function
 def streamtweets():
     myStreamListener = MyStreamListener()
     myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
-    myStream.filter(follow=['1122227682219937792'])
+    myStream.filter(follow=['44196397'])
 
 # run streaming function
 streamtweets()
