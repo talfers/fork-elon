@@ -1,3 +1,4 @@
+from datetime import datetime
 import tweepy
 from kucoin.client import Client
 from keys import *
@@ -24,8 +25,9 @@ class MyStreamListener(tweepy.StreamListener):
         # place a market order if term in tweet
         if term_used == True:
             order = client.create_market_order('DOGE-BTC', Client.SIDE_BUY, size=100)
-            print('Elon tweeted about Doge! Bought 100.')
-        # print('Tweeted, but not about terms')
+            send_alert('fork-elon alert!', 'Elon tweeted about dogecoin at {0}! Bought 100.'.format(str(datetime.now())))
+        else:
+            send_alert('fork-elon alert!', 'Elon tweeted, but not about dogecoin at {0}.'.format(str(datetime.now())))
 
 # define streaming function
 def streamtweets():
