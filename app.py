@@ -15,7 +15,7 @@ client = Client(kucoin_api_key, kucoin_api_secret, kucoin_api_passphrase)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # choose terms to watch
-terms = ['doge', 'dogecoin']
+terms = ['doge', 'dogecoin', 'Doge', 'Dogecoin', 'DOGE']
 
 # create twitter stream listener
 class MyStreamListener(tweepy.StreamListener):
